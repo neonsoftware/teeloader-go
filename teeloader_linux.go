@@ -2,7 +2,7 @@ package teeloader
 
 /*
 #cgo CFLAGS: -DUSE_LIBUSB  -Wall -O2
-#cgo LDFLAGS:  -lusb
+#cgo LDFLAGS:  ./libusb-linux-32.a ./libusb-1.0-linux-32.a -ludev
 #include "load_linux_only.h"
 #include "get_usb_devices.h"
 */
