@@ -1,8 +1,8 @@
 package teeloader
 
 /*
-#cgo CFLAGS: -DUSE_LIBUSB  -I/usr/local/include -Wall -O2
-#cgo LDFLAGS:  -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk /usr/local/lib/libusb.a /usr/local/lib/libusb-1.0.a -framework IOKit -framework CoreFoundation -lobjc
+#cgo CFLAGS: -DUSE_LIBUSB  -Wall -O2
+#cgo LDFLAGS:  -lusb
 #include "load_linux_only.h"
 */
 import "C"
