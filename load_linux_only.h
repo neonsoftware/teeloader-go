@@ -92,11 +92,13 @@ int load_teensy_with_options(char * mmcu_param, char *vendor_id_param, char *dev
 	int device_id, vendor_id;
 	sscanf( device_id_param, "%x", &device_id ) ;
 	if(!device_id){
-		die("Device ID must be a 4 Hex number. Example : 0xa4b2\n");
+		die("\tDevice ID must be a 4 Hex number. Example : 0xa4b2\n");
+		return 1;
 	} 
 	sscanf( vendor_id_param, "%x", &vendor_id ) ;
 	if(!vendor_id){
-		die("Vendor ID must be a 4 Hex number. Example : 0xa4b2\n");
+		die("\tVendor ID must be a 4 Hex number. Example : 0xa4b2\n");
+		return 1;
 	} 
 
 	if (strcasecmp(mmcu_param, "at90usb162") == 0) {
@@ -119,6 +121,7 @@ int load_teensy_with_options(char * mmcu_param, char *vendor_id_param, char *dev
 					block_size = 1024;
 				} else {
 		die("Unknown MCU type\n");
+		return 1;
 	}
 
     fprintf(stderr, "C: vendor_id_param : 0x%x\n", vendor_id);	//return 0;
@@ -129,10 +132,6 @@ int load_teensy_with_options(char * mmcu_param, char *vendor_id_param, char *dev
     fprintf(stderr, "C: Verbose : %d\n", verbose);	//return 0;
     fprintf(stderr, "C: code_size : %d\n", code_size);	//return 0;
     fprintf(stderr, "C: block_size : %d\n", block_size);	//return 0;
-    //fprintf(stderr, "Wait :\n");	//return 0;
-    //fprintf(stderr, "ciaociao2!!!!\n");	//return 0;
-    //fprintf(stderr, "ciaociao2!!!!\n");	//return 0;
-
 
     return original_main();
 }
@@ -155,19 +154,19 @@ int original_main()
 	//parse_options(argc, argv);
 	
 	if (!filename) {
-		fprintf(stderr, "Filename must be specified\n\n");
+		fprintf(stderr, "\tFilename must be specified\n\n");
 		usage();
 	}
 	if (!code_size) {
-		fprintf(stderr, "MCU type must be specified\n\n");
+		fprintf(stderr, "\tMCU type must be specified\n\n");
 		usage();
 	}
-	printf_verbose("Teensy Loader, Command Line, Version 2.0\n");
+	printf_verbose("\tTeensy Loader, Command Line, Version 2.0\n");
 
 	// read the intel hex file
 	// this is done first so any error is reported before using USB
 	num = read_intel_hex(filename);
-	if (num < 0) die("error reading intel hex file \"%s\"", filename);
+	if (num < 0) { die("error reading intel hex file \"%s\"", filename); return 1;}
 	printf_verbose("Read \"%s\": %d bytes, %.1f%% usage\n",
 		filename, num, (double)num / (double)code_size * 100.0);
 
@@ -175,12 +174,12 @@ int original_main()
 	while (1) {
 		if (teensy_open()) break;
 		if (hard_reboot_device) {
-			if (!hard_reboot()) die("Unable to find rebootor\n");
+			if (!hard_reboot()) { die("Unable to find rebootor\n"); return 1; }
 			printf_verbose("Hard Reboot performed\n");
 			hard_reboot_device = 0; // only hard reboot once
 			wait_for_device_to_appear = 1;
 		}
-		if (!wait_for_device_to_appear) die("Unable to open device\n");
+		if (!wait_for_device_to_appear) { die("Unable to open device\n"); return 1; }
 		if (!waited) {
 			printf_verbose("Waiting for Teensy device...\n");
 			printf_verbose(" (hint: press the reset button)\n");
@@ -194,7 +193,7 @@ int original_main()
 	// perhaps it changed while we were waiting?
 	if (waited) {
 		num = read_intel_hex(filename);
-		if (num < 0) die("error reading intel hex file \"%s\"", filename);
+		if (num < 0) { die("error reading intel hex file \"%s\"", filename); return 1; }
 		printf_verbose("Read \"%s\": %d bytes, %.1f%% usage\n",
 		 	filename, num, (double)num / (double)code_size * 100.0);
 	}
@@ -228,10 +227,10 @@ int original_main()
 			ihex_get_data(addr, block_size, buf + 64);
 			write_size = block_size + 64;
 		} else {
-			die("Unknown code/block size\n");
+			{ die("Unknown code/block size\n"); return 1;}
 		}
 		r = teensy_write(buf, write_size, first_block ? 3.0 : 0.25);
-		if (!r) die("error writing to Teensy\n");
+		if (!r) { die("error writing to Teensy\n"); return 1;}
 		first_block = 0;
 	}
 	printf_verbose("\n");
@@ -746,7 +745,7 @@ int open_usb_device(int vid, int pid)
 			  " USB_GET_DEVICEINFO, please upgrade!\n");
 			close(fd);
 			closedir(dir);
-			exit(1);
+			return 1;
 		}
 		//printf("%s: v=%d, p=%d\n", buf, info.udi_vendorNo, info.udi_productNo);
 		if (info.udi_vendorNo == vid && info.udi_productNo == pid) {
@@ -1014,7 +1013,7 @@ void die(const char *str, ...)
 	va_start(ap, str);
 	vfprintf(stderr, str, ap);
 	fprintf(stderr, "\n");
-	exit(1);
+	//exit(1);
 }
 
 #if defined(WIN32)

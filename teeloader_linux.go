@@ -21,6 +21,7 @@ func Teensy_load(mmcu string, vendor_id string, device_id string, hex_path strin
 	fmt.Println("No reboot: ", no_reboot)
 	fmt.Println("Verbose: ", verbose)
 	C.load_teensy_with_options(C.CString(mmcu), C.CString(vendor_id), C.CString(device_id), C.CString(hex_path), C.int(wait), C.int(hard_reboot), C.int(no_reboot), C.int(verbose))
+	fmt.Println("---> Firmware loaded. ")
 	return 0
 }
 

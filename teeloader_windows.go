@@ -1,10 +1,9 @@
 package teeloader
 
 /*
-#cgo CFLAGS: -DUSE_LIBUSB  -I/usr/local/include -Wall -O2
-#cgo LDFLAGS:  -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk /usr/local/lib/libusb.a /usr/local/lib/libusb-1.0.a -framework IOKit -framework CoreFoundation -lobjc
+#cgo CFLAGS: -O2 -Wall 
+#cgo LDFLAGS: -lhid -lsetupapi
 #include "load_linux_only.h"
-#include "get_usb_devices.h"
 */
 import "C"
 import "fmt"
@@ -29,23 +28,4 @@ func Teensy_load(mmcu string, vendor_id string, device_id string, hex_path strin
 		fmt.Println("\n---> Firmware not loaded. \n")
 	}
 	return 0
-}
-
-func GetConnectedUSBTeensy() []string {
-
-	buffer := make([]byte, 256)
-	productIds := []string {}
-
-	teensys := C.getConnectedTeensys( (*C.char)(unsafe.Pointer(&buffer[0])) )
-
-	if ( teensys > 0 ){
-		for _, productId := range strings.Split( string(buffer) ,"#") {
-			if ( productId[0] == '0' ){
-				//fmt.Println("Adding : ", productId, " which is not null")
-				productIds = append ( productIds , productId )
-			}
-		}
-	}
-
-	return productIds
 }
