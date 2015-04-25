@@ -1,7 +1,7 @@
 package teeloader
 
 /*
-#cgo CFLAGS: -O2 -Wall -DUSE_LIBUSB 
+#cgo CFLAGS: -O2 -Wall -DUSE_WIN32 
 #cgo LDFLAGS: -lhid -lsetupapi
 #include "load_linux_only.h"
 */
