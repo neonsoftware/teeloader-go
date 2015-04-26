@@ -7,8 +7,8 @@ package teeloader
 */
 import "C"
 import "fmt"
-import "unsafe"
-import "strings"
+//import "unsafe"
+//import "strings"
 
 func Teensy_load(mmcu string, vendor_id string, device_id string, hex_path string, wait int, hard_reboot int, no_reboot int, verbose int) int {
 	fmt.Println("\n_____ Starting GO Teensy loader wrapper \n")
