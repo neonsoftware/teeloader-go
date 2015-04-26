@@ -371,7 +371,7 @@ int hard_reboot(void)
 /*                                                              */
 /****************************************************************/
 
-#ifdef(USE_WIN32)
+#if defined(USE_WIN32)
 
 // http://msdn.microsoft.com/en-us/library/ms790932.aspx
 #include <windows.h>
