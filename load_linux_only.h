@@ -371,7 +371,7 @@ int hard_reboot(void)
 /*                                                              */
 /****************************************************************/
 
-#ifndef(NO_USE_WIN32)
+//#ifndef(NO_USE_WIN32)
 
 // http://msdn.microsoft.com/en-us/library/ms790932.aspx
 #include <windows.h>
@@ -512,7 +512,7 @@ int hard_reboot(void)
 	return r;
 }
 
-#endif
+//#endif
 
 
 
