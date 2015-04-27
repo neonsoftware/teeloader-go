@@ -31,5 +31,5 @@ func Teensy_load(mmcu string, vendor_id string, device_id string, hex_path strin
 }
 
 func GetConnectedUSBTeensy() []string {
-	return ["aaa", "bbb"]
+	return []string{"aaa", "bbb"}
 }
