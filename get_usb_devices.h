@@ -2,7 +2,6 @@
 
 #define TEENSY_VENDOR_ID 0x16c0
 
-
 int getConnectedTeensys (char * out)
 {
 	int teensy_found = 0;

@@ -29,3 +29,7 @@ func Teensy_load(mmcu string, vendor_id string, device_id string, hex_path strin
 	}
 	return 0
 }
+
+func GetConnectedUSBTeensy() []string {
+	return ["aaa", "bbb"]
+}
