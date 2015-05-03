@@ -2,11 +2,10 @@ package teeloader
 
 /*
 #cgo darwin CFLAGS: -DUSE_LIBUSB  -I/usr/local/include -Wall -O2
-#cgo darwin LDFLAGS:  -isysroot /usr/local/lib/libusb.a /usr/local/lib/libusb-1.0.a -framework IOKit -framework CoreFoundation -lobjc
-#cgo linux 386 CFLAGS: -DUSE_LIBUSB  -Wall -O2
-#cgo linux 386 LDFLAGS:  ./libusb-dep/libusb-0.1-linux-x86.a ./libusb-dep/libusb-1.0-linux-x86.a -ludev
-#cgo linux amd64 CFLAGS: -DUSE_LIBUSB  -Wall -O2
-#cgo linux amd64 LDFLAGS:  ./libusb-dep/libusb-0.1-linux-x64.a ./libusb-dep/libusb-1.0-linux-x64.a -ludev
+#cgo darwin  LDFLAGS:  -framework IOKit  -lobjc -framework CoreFoundation ./libusb-dep/libusb-0.1-darwin-x64.a ./libusb-dep/libusb-1.0-darwin-x64.a
+#cgo linux CFLAGS: -DUSE_LIBUSB  -Wall -O2
+#cgo linux,386 LDFLAGS:  ./libusb-dep/libusb-0.1-linux-x64.a ./libusb-dep/libusb-1.0-linux-x64.a -ludev
+#cgo linux,amd64 LDFLAGS:  ./libusb-dep/libusb-0.1-linux-x64.a ./libusb-dep/libusb-1.0-linux-x64.a -ludev
 #cgo windows CFLAGS: -O2 -Wall -DUSE_WIN32 
 #cgo windows LDFLAGS: -lhid -lsetupapi
 #include "load_linux_only.h"
