@@ -1,4 +1,4 @@
-#include "libusb-dep/libusb.h"
+#include "libusb-dep/libusba.h"
 
 #define TEENSY_VENDOR_ID 0x16c0
 

@@ -260,7 +260,7 @@ int original_main()
 #if defined(USE_LIBUSB)
 
 // http://libusb.sourceforge.net/doc/index.html
-#include "libusb-dep/usb.h"
+#include "libusb-dep/usb.hs"
 
 usb_dev_handle * open_usb_device(int vid, int pid)
 {
