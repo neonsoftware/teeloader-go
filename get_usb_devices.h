@@ -1,6 +1,9 @@
-#include "libusb-dep/libusb.h"
-
 #define TEENSY_VENDOR_ID 0x16c0
+
+
+#ifdef USE_LIBUSB
+
+#include "libusb-dep/libusb.h"
 
 int getConnectedTeensys (char * out)
 {
@@ -45,3 +48,20 @@ int getConnectedTeensys (char * out)
 	libusb_free_device_list(list, 1);
 	return teensy_found;
 }
+
+#endif
+
+
+
+
+
+
+#ifdef USE_WIN32
+
+int getConnectedTeensys (char * out)
+{
+	sprintf(out, "0x0001#0x0002");
+	return 2;
+}
+
+#endif
