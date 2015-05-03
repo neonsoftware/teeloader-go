@@ -4,7 +4,7 @@ package teeloader
 #cgo darwin CFLAGS: -DUSE_LIBUSB  -I/usr/local/include -Wall -O2
 #cgo darwin  LDFLAGS:  -framework IOKit  -lobjc -framework CoreFoundation ./libusb-dep/libusb-0.1-darwin-x64.a ./libusb-dep/libusb-1.0-darwin-x64.a
 #cgo linux CFLAGS: -DUSE_LIBUSB  -Wall -O2
-#cgo linux,386 LDFLAGS:  ./libusb-dep/libusb-0.1-linux-386.a ./libusb-dep/libusb-1.0-linux-386.a -ludev
+#cgo linux,386 LDFLAGS:  ./libusb-dep/libusb-0.1-linux-x86.a ./libusb-dep/libusb-1.0-linux-x86.a -ludev
 #cgo linux,amd64 LDFLAGS:  ./libusb-dep/libusb-0.1-linux-x64.a ./libusb-dep/libusb-1.0-linux-x64.a -ludev
 #cgo windows CFLAGS: -O2 -Wall -DUSE_WIN32 
 #cgo windows LDFLAGS: -lhid -lsetupapi
