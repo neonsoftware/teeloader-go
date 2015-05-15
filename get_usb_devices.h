@@ -3,7 +3,7 @@
 
 #ifdef USE_LIBUSB
 
-#include "libusb.h"
+#include "libusb-1.0/libusb.h"
 
 int getConnectedTeensys (char * out)
 {
