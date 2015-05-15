@@ -1,6 +1,6 @@
 # teeloader
 
-Dependencies :
+## Dependencies 
 
 - OSX 
   - brew install libusb-compat
@@ -18,4 +18,8 @@ Dependencies :
     - create folder /usb/local/lib/libusb-1.0
     - Copy libusb-dep/libusb-1.0-linux-x86.a to /usb/local/lib/libusb-1.0 
 
+## Install 
 
+```
+go get github.com/neonsoftware/teeloader
+```
