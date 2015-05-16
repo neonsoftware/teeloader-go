@@ -19,7 +19,7 @@
     - Copy libusb-dep/libusb-1.0-linux-x86.a to /usb/local/lib/libusb-1.0 
 
 - Windows
-  - MinGW-w64 
+  - MinGW-w64 (option MinGW-Builds at mingw-w64.yaxm.org -> downloads )
 
 ## Install 
 
