@@ -1,7 +1,7 @@
 package main
 
 import (
-	"./teeloader"
+	"github.com/neonsoftware/teeloader-go/teeloader"
 	"fmt"
 	"github.com/codegangsta/cli"
 	"os"
