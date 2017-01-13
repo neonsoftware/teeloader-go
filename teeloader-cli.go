@@ -1,7 +1,6 @@
-package main
+package teeloader
 
 import (
-	"github.com/neonsoftware/teeloader-go/teeloader"
 	"fmt"
 	"github.com/codegangsta/cli"
 	"os"
@@ -92,7 +91,7 @@ func main() {
 			noreboot = 1
 		}
 
-		teeloader.Teensy_load(c.String("mcu"), c.String("vendorId"), c.String("productId"), c.String("file"), wait, hardreboot, noreboot, verbose)
+		Teensy_load(c.String("mcu"), c.String("vendorId"), c.String("productId"), c.String("file"), wait, hardreboot, noreboot, verbose)
 	}
 
 	app.Run(os.Args)
