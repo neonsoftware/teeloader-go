@@ -1,13 +1,14 @@
 package teeloader
 
 /*
-#cgo darwin CFLAGS: -DUSE_LIBUSB  -I/usr/local/include -Wall -O2
-#cgo darwin  LDFLAGS:  -framework IOKit  -lobjc -framework CoreFoundation /usr/local/lib/libusb.a /usr/local/lib/libusb-1.0.a
-#cgo linux CFLAGS: -DUSE_LIBUSB  -Wall -O2
+#cgo darwin CFLAGS: -DUSE_LIBUSB  -Ilibusb-dep/darwin -Wall -O2 -DOS_MACOSX
+#cgo darwin  LDFLAGS:  -framework IOKit  -lobjc -framework CoreFoundation libusb-dep/darwin/libusb-0.1-darwin-x64.a libusb-dep/darwin/libusb-1.0-darwin-x64.a
+#cgo linux CFLAGS: -DUSE_LIBUSB  -Wall -O2 -DOS_LINUX
 #cgo linux,386 LDFLAGS:  /usr/local/lib/libusb.a /usr/local/lib/libusb-1.0.a -ludev
 #cgo linux,amd64 LDFLAGS:  /usr/local/lib/libusb.a /usr/local/lib/libusb-1.0.a -ludev
-#cgo windows CFLAGS: -O2 -Wall -DUSE_WIN32 
+#cgo windows CFLAGS: -O2 -Wall -DUSE_WIN32 -DOS_WINDOWS
 #cgo windows LDFLAGS: -lhid -lsetupapi
+
 #include "load.h"
 #include "get_usb_devices.h"
 */

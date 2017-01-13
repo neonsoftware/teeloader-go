@@ -3,7 +3,7 @@
 
 #ifdef USE_LIBUSB
 
-#include "libusb-1.0/libusb.h"
+#include "libusb.h"
 
 int getConnectedTeensys (char * out)
 {
@@ -32,7 +32,7 @@ int getConnectedTeensys (char * out)
 	    struct libusb_device_descriptor desc;
 	    if ( ( libusb_get_device_descriptor(device, &desc) == 0 ) && ( desc.idVendor == TEENSY_VENDOR_ID ) )
     	{
-    		printf("[%zd] Teensy : VendorId : 0x%.4x - ProductId : 0x%.4x\n", i, desc.idVendor, desc.idProduct);
+    		printf("\n  [%zd] Teensy : VendorId : 0x%.4x - ProductId : 0x%.4x\n", i, desc.idVendor, desc.idProduct);
     		sprintf(out, "0x%.4x#", desc.idProduct);
     		teensy_found ++;
     		out += 7;
