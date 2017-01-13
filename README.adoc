@@ -1,0 +1,67 @@
+== teeloader
+
+Batteries included 🔋 (includes libusb) loading utility for Teensy
+
+.Install
+----
+go get github.com/neonsoftware/teeloader
+----
+
+
+.Run the binary 
+----
+# Once installed the CLI command it's in your go binaries
+> $GOPATH/bin/teeloader-go --help
+NAME:
+   teeloader-osx-cli - Teensy firmware loader
+
+USAGE:
+   teeloader-go [global options] command [command options] [arguments...]
+
+VERSION:
+   0.0.0
+
+COMMANDS:
+     help, h  Shows a list of commands or help for one command
+
+GLOBAL OPTIONS:
+   --mcu value             Teensy chip (default: "mk20dx256")
+   --file value, -f value  Input hefx file
+   --vendorId value        USB Vendor ID (default: "0x16c0")
+   --productId value       USB Product ID (default: "0x0486")
+   --verbose, -V           Verbose
+   --wait, -w              Wait
+   --hardreboot, -r        Hard Reboot
+   --noreboot, -n          No Reboot
+   -l                      List all Teensy USB devices
+   --help, -h              show help
+   --version, -v           print the version
+
+----
+
+
+.Use as library in your application 
+----
+package main
+
+import (
+  "github.com/neonsoftware/teeloader-go/teeloader"
+)
+
+func main() {
+  mcu := "mk20dx256" // Teensy chip 
+  vendor_id := "0x16c0"
+  product_id := "0x0486"
+  wait := 1
+  hardreboot := 1
+  noreboot := 1
+  verbose := 1
+  hex_file := "./test"
+  teeloader.Teensy_load(mcu, vendor_id, product_id, hex_file, wait, hardreboot, noreboot, verbose)
+}
+
+----
+
+
+On Windows. MinGW-w64 (option MinGW-Builds at mingw-w64.yaxm.org -> downloads )
+
