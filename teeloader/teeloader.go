@@ -2,7 +2,7 @@ package teeloader
 
 /*
 #cgo darwin CFLAGS: -DUSE_LIBUSB  -Ilibusb-dep/darwin -Wall -O2 -DOS_MACOSX
-#cgo darwin  LDFLAGS:  -framework IOKit  -lobjc -framework CoreFoundation /opt/tools/go/src/github.com/neonsoftware/teeloader-go/teeloader/libusb-dep/darwin/libusb-0.1-darwin-x64.a /opt/tools/go/src/github.com/neonsoftware/teeloader-go/teeloader/libusb-dep/darwin/libusb-1.0-darwin-x64.a
+#cgo darwin  LDFLAGS:  -framework IOKit  -lobjc -framework CoreFoundation ${SRCDIR}/libusb-dep/darwin/libusb-0.1-darwin-x64.a ${SRCDIR}/libusb-dep/darwin/libusb-1.0-darwin-x64.a
 #cgo linux CFLAGS: -DUSE_LIBUSB  -Wall -O2 -DOS_LINUX
 #cgo linux,386 LDFLAGS:  /usr/local/lib/libusb.a /usr/local/lib/libusb-1.0.a -ludev
 #cgo linux,amd64 LDFLAGS:  /usr/local/lib/libusb.a /usr/local/lib/libusb-1.0.a -ludev
