@@ -1,14 +1,14 @@
 == teeloader
 
-Batteries included 🔋 (includes libusb) loading utility for Teensy
+Batteries included 🔋 (includes ```libusb```) loading utility for the Teensy microcontroller
 
-.Install
+==== Install
 ----
 go get github.com/neonsoftware/teeloader
 ----
 
 
-.Run the binary 
+==== Run the binary 
 ----
 # Once installed the CLI command it's in your go binaries
 > $GOPATH/bin/teeloader-go --help
@@ -40,7 +40,7 @@ GLOBAL OPTIONS:
 ----
 
 
-.Use as library in your application 
+==== Use as library in your application 
 ----
 package main
 
@@ -63,5 +63,5 @@ func main() {
 ----
 
 
-On Windows. MinGW-w64 (option MinGW-Builds at mingw-w64.yaxm.org -> downloads )
+// On Windows. MinGW-w64 (option MinGW-Builds at mingw-w64.yaxm.org -> downloads )
 
