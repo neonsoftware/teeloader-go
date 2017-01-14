@@ -1,4 +1,4 @@
-== teeloader
+== teeloader-go
 
 Batteries included 🔋 (includes ```libusb```) loading utility for the Teensy microcontroller
 
